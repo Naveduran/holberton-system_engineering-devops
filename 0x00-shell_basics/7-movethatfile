@@ -1,2 +1,2 @@
 #!/bin/bash
-cp betty /holberton
+mv betty /tmp/holberton/

@@ -1,0 +1,1 @@
+This is the readme file of the project 0x03 about she shell variables, the PATH, and expansions. 

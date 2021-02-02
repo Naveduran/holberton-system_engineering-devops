@@ -1,2 +1,2 @@
 #!/bin/bash
-cat -n | cut --characters=6- | grep -P"^{13579}" | cut -f 2#!/bin/bash
+cat -n | cut --characters=6- | grep -P "^{13579}" | cut -f 2

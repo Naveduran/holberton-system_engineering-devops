@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# loops from 1 to 10 and: displays different messages for each iteration
+hour=0
+min=1
+while [ $hour -le 12 ]
+do
+
+	echo "Hour $hour:"
+ 	while [ $min -le 59 ]
+	do
+		echo "$min"
+		((min++))
+	done
+
+	min=1
+	((hour++))
+done

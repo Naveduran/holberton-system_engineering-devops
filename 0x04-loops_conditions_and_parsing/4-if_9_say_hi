@@ -2,10 +2,10 @@
 # This script is displaying "Holberton School" 10 times whith a while statement
 i=0
 until [ $i -eq 10 ]; do
-		echo "Holberton School"
-		if [ $i -eq 8 ];
-		then
-				echo "Hi"
-		fi
-		((i++))
+	echo "Holberton School"
+	if [ $i -eq 8 ];
+	then
+		echo "Hi"
+	fi
+	((i++))
 done

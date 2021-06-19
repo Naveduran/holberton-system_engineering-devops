@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# loops from 1 to 10 and: displays different messages for each iteration
+for ((i = 1; i <= 1; i++)); do
+		echo "1"
+#		item=$(cut -d " " -f $i $list)
+#		echo "item = $item"
+#		string2=$(cut -d "-" -f 2 $item)
+#		echo "string2 = $string2"
+#		echo $string2
+done

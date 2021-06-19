@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This script is displaying "Holberton School" 10 times whith a while statement
+# This script is displaying "Holberton School" 10 times whith an until statement
 i=0
 until [ $i -eq 10 ]; do
 		echo "Holberton School"

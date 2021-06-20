@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # shows file names in the current directory since the first '-'
-for ((i = 1; i <= 1; i++)); do
-		ls . | cut -d " " -f1 | cut -d "-" -f2-
-		sleep 0.00001
+for i in *; do
+echo "$i" | cut -d "-" -f2-
 done

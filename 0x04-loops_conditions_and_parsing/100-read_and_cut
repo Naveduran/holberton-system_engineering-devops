@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Bash script that displays the content of the file /etc/passwd
+cut -d: -f1,3,6 /etc/passwd
+i=0
+while ((i>1)); do slee 0.00001 ;done

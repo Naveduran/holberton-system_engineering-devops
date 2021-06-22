@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# manage signals
+pgrep -f ./4-to_infinity_and_beyond > /var/run/holbertonscript.pid
+
+function love()
+{
+	echo "Y U no love me?!"
+}
+function erase_end()
+{
+	sudo rm -r -f "/var/run/holbertonscript.pid"
+	pgrep -f "./4-to_infinity_and_beyond"
+}
+function hate()
+{
+	echo "I hate the kill command"
+	erase_end
+}
+trap love SIGINT
+trap erase_end SIGQUIT
+trap hate SIGTERM
+
+while (( 1 )); do
+		echo "To infinity and beyond"
+		sleep 2
+done

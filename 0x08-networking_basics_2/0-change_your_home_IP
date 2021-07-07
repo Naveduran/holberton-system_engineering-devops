@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# configures an Ubuntu server directions to localhost and facebook.com
+echo -e "8.8.8.8\t\tfacebook.com" > file
+sed 's/127.0.0.1\tlocalhost/127.0.0.2\tlocalhost/' /etc/hosts >> file
+sudo cp -f file /etc/hosts

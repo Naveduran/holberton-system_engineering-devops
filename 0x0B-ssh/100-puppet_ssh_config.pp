@@ -1,4 +1,4 @@
-# using Puppet to make changes to our configuration file of a server
+# u sing Puppet to make changes to our configuration file of a server
 
 $str = "# Config file
 Host 34.138.249.185

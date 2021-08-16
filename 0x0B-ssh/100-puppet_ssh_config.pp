@@ -1,4 +1,4 @@
-# using Puppet to make changes to our configuration file of a server
+# Using Puppet to make changes to our configuration file of a server
 
 file_line{'Use the private key in the file ~/.ssh/holberton':
   path => '/etc/ssh/ssh_config',

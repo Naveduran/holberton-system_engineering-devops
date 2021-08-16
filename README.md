@@ -1,9 +1,6 @@
 # Sysadmin / Devops
 
-Here I built web infrastructures similar to those powering tech powerhouses like LinkedIn, <br>
-Facebook, and Google. You will architect scalable, reliable, and secure systems using web <br>
-servers, load balancers, databases, firewalls, and more. I learnt to automate your job <br>
-so that I can easily manage anything from one server or hundreds of them.
+Here I built web infrastructures similar to those powering tech powerhouses like LinkedIn, Facebook, and Google. You will architect scalable, reliable, and secure systems using web servers, load balancers, databases, firewalls, and more. I learnt to automate your job so that I can easily manage anything from one server or hundreds of them.
 
 ![Example of Web infraestructure design](https://i.imgur.com/LhB8tIr.jpg)
 

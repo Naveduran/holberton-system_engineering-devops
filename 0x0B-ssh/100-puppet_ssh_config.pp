@@ -1,10 +1,15 @@
-# u sing Puppet to make changes to our configuration file of a server
+# using Puppet to make changes to our configuration file of a server
 
-$s = "IdentityFile ~/.ssh/holberton\n\tPasswordAuthentication no\n"
-
-file_line { 'Add two lines to the ssh config file':
+file_line { 'Authenticate with the holberton file':
   ensure    => present,
-  line      => $s,
+  line      => 'IdentityFile ~/.ssh/holberton',
+  path      => '.ssh/config',
+  replace   => false,
+}
+
+file_line { 'Refuse Password authentication':
+  ensure    => present,
+  line      => 'PasswordAuthentication no',
   path      => '.ssh/config',
   replace   => false,
 }

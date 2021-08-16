@@ -1,13 +1,11 @@
 # using Puppet to make changes to our configuration file of a server
 
-file_line { 'Authenticate with the holberton file':
-  ensure    => present,
-  line      => 'IdentityFile ~/.ssh/holberton',
-  path      => '.ssh/config',
+file_line{'Use the private key in the file ~/.ssh/holberton':
+  path => '/etc/ssh/ssh_config',
+  line => 'IdentityFile ~/.ssh/holberton',
 }
 
-file_line { 'Refuse Password authentication':
-  ensure    => present,
-  line      => 'PasswordAuthentication no',
-  path      => '.ssh/config',
+file_line{'Refuse authentication using a password':
+  path => '/etc/ssh/ssh_config',
+  line => 'PasswordAuthentication no',
 }

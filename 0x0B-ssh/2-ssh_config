@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# configure the local ssh client of the server to avoid typing a password
+
+Host ubuntu@34.138.249.185
+     HostName 34.138.249.185
+     User ubuntu
+     IdentityFile ~/.ssh/holberton

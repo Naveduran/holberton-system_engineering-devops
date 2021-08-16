@@ -9,7 +9,8 @@ so that I can easily manage anything from one server or hundreds of them.
 
 -How the Shell works <br>
 -Navigating the file system <br>
--Manipulating files -I/O redirections, standard input, standard output, pipes, filters 
+-Manipulating files <br>
+-I/O redirections, standard input, standard output, pipes, filters <br>
 -Permissions <br>
 -Job control <br>
 -Shell scripts <br>

@@ -9,10 +9,10 @@ Host 34.138.249.185
 
 file { '.ssh/config':
   ensure  => 'present',
-}
-
+}->
 file_line { 'Append some lines to the config file':
-  ensure => present,
-  path   => '.ssh/config',
-  line   => $str,
+  ensure    => present,
+  path      => '.ssh/config',
+  multiple  => true,
+  line      => $str,
 }

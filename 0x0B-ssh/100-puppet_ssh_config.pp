@@ -1,18 +1,10 @@
 # u sing Puppet to make changes to our configuration file of a server
 
-$str = "# Config file
-Host 34.138.249.185
-     HostName 34.138.249.185
-     User ubuntu
-     IdentityFile ~/.ssh/holberton
-"
+$s = "     IdentityFile ~/.ssh/holberton\n     PasswordAuthentication no\n"
 
-file { '.ssh/config':
-  ensure  => 'present',
-}->
-file_line { 'Append some lines to the config file':
+file_line { 'Add two lines to the ssh config file':
   ensure    => present,
+  line      => $s,
   path      => '.ssh/config',
-  multiple  => true,
-  line      => $str,
+  replace   => false,
 }

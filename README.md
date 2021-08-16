@@ -5,6 +5,8 @@ Facebook, and Google. You will architect scalable, reliable, and secure systems 
 servers, load balancers, databases, firewalls, and more. I learnt to automate your job <br>
 so that I can easily manage anything from one server or hundreds of them.
 
+![Example of Web infraestructure design](https://i.imgur.com/LhB8tIr.jpg)
+
 ### LINUX COMMAND LINE:
 
 -How the Shell works <br>

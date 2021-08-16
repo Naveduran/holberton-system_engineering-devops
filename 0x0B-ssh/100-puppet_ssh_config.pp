@@ -1,4 +1,4 @@
-# puppet command to create a config file in a server
+# using Puppet to make changes to our configuration file of a server
 
 $str = "# Config file
 Host *

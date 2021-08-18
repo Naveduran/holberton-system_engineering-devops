@@ -6,3 +6,4 @@ apt-get upgrade -y
 apt-get install nginx -y
 
 echo "Holberton School for the win!" > /var/www/html/index.nginx-debian.html
+echo "Holberton School for the win!" > /var/www/html/index.html

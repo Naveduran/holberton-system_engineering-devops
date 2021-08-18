@@ -6,10 +6,4 @@ if [[ "$#" -lt 3 ]] ; then
     exit;
 fi
 
-FILE="$1" # $1 source file path
-DESTINY="~"
-IP="$2" # destiny server IP
-USER="$3" # destiny username
-KEY="$4" # SSH private key path
-
-scp -o StrictHostKeyChecking=no -i "$KEY" "$FILE" "$USER"@"$IP":"$DESTINY"
+scp -o StrictHostKeyChecking=no -i "$4" "$1" "$3@$2:~"

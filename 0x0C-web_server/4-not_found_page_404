@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# install nginx listening to port 80 and show string in the page.
+
+echo "<html><head></head><body><p>Ceci n'est pas une page<\p>
+</body></html>" > error404.html
+
+match="server_name _;"
+new="\n\terror_page 404 /error404.html;"
+sed -i "/$match/a\\$new" /etc/nginx/sites-available/default
+service nginx restart

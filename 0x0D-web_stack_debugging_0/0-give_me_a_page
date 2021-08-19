@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# fixing the Apache web server
+
+# Set The server name directive
+echo "ServerName 127.0.0.1" >> /etc/apache2/apache2.conf
+
+# Create html and put it in the html directory
+echo "Hello Holberton" > /var/www/html/index.html

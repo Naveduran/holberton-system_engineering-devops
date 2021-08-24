@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Server config. Run in the server with sudo.
+
+# install nginx
+apt-get update -y
+apt-get upgrade -y
+apt-get install nginx -y
+service nginx start
+
+# Set content of the default and error pages
+echo "Holberton School" > /var/www/html/index.html
+echo "Ceci n'est pas une page" > /var/www/html/error404.html
+
+# Config the rules to run default and error pages
+match="server_name _;"
+new="\n\tlocation /redirect_me {\n\t\treturn 301 https://naveduran.tech;\n\t}"
+sed -i "/$match/a\\$new" /etc/nginx/sites-available/default
+
+match="server_name _;"
+new="\n\terror_page 404 /error404.html;\n"
+sed -i "/$match/a\\$new" /etc/nginx/sites-available/default
+
+# Set a custom header that sends the hostname
+match="then fall back to displaying a 404"
+new="\n\t\tadd_header X-Served-By $HOSTNAME;\n"
+sed -i "/$match/a\\$new" /etc/nginx/sites-available/default
+
+# Restart the server
+service nginx restart

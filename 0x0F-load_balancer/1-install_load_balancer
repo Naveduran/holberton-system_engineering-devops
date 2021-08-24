@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Configure a haproxy Load Balancer. Run with sudo in the server.
+apt-get update
+apt-get install -y haproxy
+echo "
+frontend http
+    bind 0:80
+    mode http
+    default_backend web-backend
+
+backend web-backend
+    balance roundrobin
+    server web-01 34.138.249.185:80
+    server web-02 54.226.27.218:80" >> /etc/haproxy/haproxy.cfg
+
+service haproxy restart

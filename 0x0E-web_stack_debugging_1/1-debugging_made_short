@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Creating a symbolic link
-sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
-pkill nginx
+sudo sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
+sudo pkill -l nginx

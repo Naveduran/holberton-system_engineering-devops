@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Changes the port listenning on 8080 for 80
+
+sudo pkill -f nginx & wait $!
+sudo service nginx restart
+
+match='listen 8080 default_server'
+new='listen 80 default_server'
+sed -i "s/$match/$new/" /etc/nginx/sites-available/default
+
+match='listen \[::\]:8080 default_server'
+new='listen [::]:80 default_server'
+sed -i "s/$match/$new/" /etc/nginx/sites-available/default
+
+match='ipv6only=on;'
+new='ipv4only=on'
+sed -i "s/$match/$new/" /etc/nginx/sites-available/default
+
+service nginx restart
+service nginx status

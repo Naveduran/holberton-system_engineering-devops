@@ -8,8 +8,7 @@ file_line { 'redirect_me':
   ensure => 'present',
   path   => '/etc/nginx/sites-available/default',
   after  => 'server_name _;',
-  line   => '\n\tlocation /redirect_me {\t\treturn 301 https://}
-  \terror_page 404 /error404.html;\n',
+  line   => '\n\tlocation /redirect_me {\n\t\treturn 301 https://www.google.com\n\t}\n\terror_page 404 /error404.html;\n',
 }
 # Create html fake file
 file {'index.html':

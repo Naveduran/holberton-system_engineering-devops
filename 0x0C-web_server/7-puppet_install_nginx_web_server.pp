@@ -1,30 +1,29 @@
-# Configure an Nginx server
-
-package { 'Install Nginx web server':
+# Install Nginx web server
+package { 'nginx':
   ensure => 'installed',
   name   => 'nginx',
 }
-
-file_line { 'Create error and redirect pages':
+# Create error and redirect pages
+file_line { 'redirect_me':
   ensure => 'present',
   path   => '/etc/nginx/sites-available/default',
   after  => 'server_name _;',
   line   => '\n\tlocation /redirect_me {\t\treturn 301 https://}
   \terror_page 404 /error404.html;\n',
 }
-
-file {'Create index.html file':
+# Create html fake file
+file {'index.html':
   ensure  => 'present',
   content => 'Holberton School',
   path    => '/var/www/html/index.html',
 }
-
-file {'Create error.html file':
+# Create error fake html file
+file {'error404.html':
   ensure  => 'present',
   content => "Ceci n'est pas une page",
   path    => '/var/www/html/error404.html',
 }
-
+# Initialize nginx is running
 service { 'Initialize nginx':
   ensure  => 'running',
   require => Package['nginx'],

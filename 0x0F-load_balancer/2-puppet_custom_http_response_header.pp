@@ -5,6 +5,7 @@ exec {'update':
 }
 package { 'nginx':
   ensure   => installed,
+  require  => Exec['update'],
 }
 # Add header
 file_line { 'add_header':
@@ -12,7 +13,9 @@ file_line { 'add_header':
   path   => '/etc/nginx/sites-available/default',
   after  => 'server_name _;',
   line   => "add_header X-Served-By ${hostname};",
+  require => Package['nginx']
 }
 service {'restart':
   ensure => running,
+  require => File_Line['add_header']
 }

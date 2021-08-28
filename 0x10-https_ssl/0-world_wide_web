@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Show information about a domain and its subdomains
+
+func () {
+		SDM=$(dig "$M$1" | grep -A1 'ANSWER SECTION:' | tail -n1 | awk -F  '.' '{print $1}')
+		REC=$(dig "$M$1" | grep -A1 'ANSWER SECTION:' | tail -n1 | awk -F  ' ' '{print $4}')
+		IP=$(dig "$M$1"  | grep -A1 'ANSWER SECTION:' | tail -n1 | awk -F  ' ' '{print $5}')
+		echo "The subdomain $SDM is a $REC record and points to $IP"
+}
+if [[ "$#" -gt 1 ]];
+then # have subdomain
+		M=$2
+		M+='.'
+		func "$1" "$M"
+else # Show all subdomains
+		for i in "www." "lb-01." "web-01." "web-02."
+		do
+				M="$i"
+				func "$1" "$M"
+		done
+fi

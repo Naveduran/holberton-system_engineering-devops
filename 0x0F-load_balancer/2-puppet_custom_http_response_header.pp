@@ -1,12 +1,10 @@
 # Install Nginx web server
 exec {'update':
-  command => 'sudo apt-get update',
-  path    => '/usr/bin/',
+  command  => 'sudo apt-get update',
+  provider => shell,
 }
 package { 'nginx':
-  ensure   => 'present',
-  name     => 'nginx',
-  provider => 'apt',
+  ensure   => installed,
 }
 # Add header
 file_line { 'add_header':

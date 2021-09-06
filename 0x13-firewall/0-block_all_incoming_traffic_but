@@ -5,5 +5,8 @@ match=" listen 80 default_server;"
 new="\n\tlisten 443;\n"
 sed -i "/$match/a\\$new" /etc/nginx/sites-available/default
 
+ufw default deny incoming
+ufw default allow outgoing
+
 ufw -f allow proto tcp from any to any port 22,80,443 && ufw -f enable
 service nginx restart

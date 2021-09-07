@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # run the whoami command under the user passed as an argumentuser="$1"
 sudo useradd "$1"
-echo "whoami" | sudo su "$1"
+sudo -u "$1" whoami

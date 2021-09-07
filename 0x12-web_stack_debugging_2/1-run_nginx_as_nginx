@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Configure container to logging as nginx user instead of root
+pkill apache2
+sed -i 's/80/8080/g' /etc/nginx/sites-enabled/default
+chmod 777 /etc/nginx/nginx.conf
+sudo -u nginx service nginx start
+chmod 000 /etc/nginx/nginx.conf

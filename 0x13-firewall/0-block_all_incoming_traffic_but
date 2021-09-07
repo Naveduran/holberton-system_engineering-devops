@@ -1,13 +1,5 @@
-#!/usr/bin/env bash
-# Allow Firewall and activates nginx listening port 443
-
-match=" listen 80 default_server;"
-new="\n\tlisten 443;\n"
-sed -i "/$match/a\\$new" /etc/nginx/sites-available/default
-service nginx restart
-
 ufw default deny incoming
-ufw -f allow proto tcp from any to any port 22
-ufw -f allow proto tcp from any to any port 80
-ufw -f allow proto tcp from any to any port 443
-ufw -f enable
+ufw allow 22
+ufw allow 80
+ufw allow 443
+ufw enable

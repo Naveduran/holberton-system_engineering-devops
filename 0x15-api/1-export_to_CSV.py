@@ -6,7 +6,6 @@ employee ID, using an REST API
 if __name__ == "__main__":
     import requests
     from sys import argv
-    import pandas as pd
 
     employee_id = argv[1]
 
@@ -20,14 +19,14 @@ if __name__ == "__main__":
     text = ""
     for item in todos_list:
         t = '"{}","{}","{}","{}"\n'.format(
-            user.get('id'),
-            user.get('name'),
+            employee_id,
+            user.get('username'),
             item.get('completed'),
             item.get('title')
         )
         text += t
 
-    filename = "{}.csv".format(user.get('id'))
+    filename = "{}.csv".format(employee_id)
 
     with open(filename, 'w') as f:
         f.write(text)

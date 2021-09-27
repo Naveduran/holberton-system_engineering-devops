@@ -13,10 +13,9 @@ def number_of_subscribers(subreddit):
     headers = {
         'User-Agent':
         'AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75'}
-    try:
-        r = requests.get(URL, headers=headers, allow_redirects=False)
-        subs = r.json().get('data').get('subscribers')
-        return (subs)
-    # print(json.dumps(subs, indent=4))
-    except AttributeError:
-        return (0)
+    r = requests.get(URL, headers=headers, allow_redirects=False)
+    if r.status_code != 200:
+        return 0
+    data = r.json().get('data')
+    subs = data.get('subscribers')
+    return (subs)

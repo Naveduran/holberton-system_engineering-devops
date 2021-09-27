@@ -13,9 +13,9 @@ def top_ten(subreddit):
         'User-Agent':
         'AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75'}
     r = requests.get(URL, headers=headers, allow_redirects=False)
-    if r.status_code != 200:
-        print('None')
-        return
-    children = r.json().get('data').get('children')
-    for i in range(0, 10):
-        print('{}'.format(children[i].get('data').get('title')))
+    if r.status_code == 200:
+        children = r.json().get('data').get('children')
+        for child in children:
+            print('{}'.format(child.get('data').get('title')))
+    else:
+        print(None)

@@ -4,7 +4,6 @@ for a given subreddit. If an invalid subreddit is given,
 the function should return 0.
 """
 import requests
-import json
 
 
 def number_of_subscribers(subreddit):
@@ -15,7 +14,6 @@ def number_of_subscribers(subreddit):
         'AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75'}
     r = requests.get(URL, headers=headers, allow_redirects=False)
     if r.status_code != 200:
-        return 0
-    data = r.json().get('data')
-    subs = data.get('subscribers')
+        return (0)
+    subs = r.json().get('data').get('subscribers')
     return (subs)

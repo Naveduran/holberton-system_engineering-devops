@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 """creates a list with all the titles of reddit post"""
-import requests
-import json
 import copy
+import requests
 
 
 def recurse(subreddit, hot_list=[], after=''):

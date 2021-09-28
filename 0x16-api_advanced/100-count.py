@@ -8,8 +8,13 @@ def to_text(hot_dict):
     if len(hot_dict) == 0:
         return ''
     text = ''
-    keys = sorted(hot_dict.items(), key=lambda tup: tup[1], reverse=True)
-    for key in keys:
+    ordered_by_alpha = sorted(hot_dict.items(),
+                              key=lambda tup: tup[0],
+                              reverse=False)
+    ordered_by_values = sorted(ordered_by_alpha,
+                               key=lambda tup: tup[1],
+                               reverse=True)
+    for key in ordered_by_values:
         value = hot_dict.get(key[0])
         text += key[0] + ': ' + str(value) + '\n'
     print(text, end='')

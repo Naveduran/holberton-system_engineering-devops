@@ -36,9 +36,9 @@ def count_words(subreddit, word_list, after='', hot_dict={}):
         return to_text(hot_dict)
 
     # Get the tittle and parse it
-    title = data.get('children')[0].get('data').get('title').lower()
+    title = data.get('children')[0].get('data').get('title')
     for word in word_list:
-        if title.count(word.lower()):
+        if title.count(word):
             if word in hot_dict:
                 number = hot_dict.get(word) + 1
                 hot_dict.update({word: number})

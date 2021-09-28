@@ -42,10 +42,13 @@ def count_words(subreddit, word_list, after='', hot_dict={}):
     if len(data.get('children')) == 0:
         return to_text(hot_dict)
 
-    # Get the tittle, split words, compare with the words list,
-    # if words are founded --> add count to the dictionary
+    # Get the tittle of this post and turn to lower case,
     title = data.get('children')[0].get('data').get('title').lower()
+
+    # Split words of the title, put in a list to search easier
     title_words = title.split()
+
+    # If a desired word is in the title --> Add count to the dictionary
     for word in word_list:
         if title_words.count(word):
             if word in hot_dict:
@@ -54,6 +57,6 @@ def count_words(subreddit, word_list, after='', hot_dict={}):
             else:
                 hot_dict.update({word: title_words.count(word)})
 
-    # Call this recursive function for the next element of the list
+    # Call this recursive function for the next reddit post
     after = data.get('after')
     count_words(subreddit, word_list, after, hot_dict)

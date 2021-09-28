@@ -11,8 +11,8 @@ def to_text(hot_dict):
     keys = sorted(hot_dict.items(), key=lambda tup: tup[1], reverse=True)
     for key in keys:
         value = hot_dict.get(key[0])
-        text += key[0] + ':' + str(value) + '\n'
-    print(text)
+        text += key[0] + ': ' + str(value) + '\n'
+    print(text, end='')
 
 
 def count_words(subreddit, word_list, after='', hot_dict={}):
@@ -23,7 +23,7 @@ def count_words(subreddit, word_list, after='', hot_dict={}):
         subreddit, after)
     headers = {
         'User-Agent':
-        'AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75'}
+        'Nat'}
     r = requests.get(URL, headers=headers, allow_redirects=False)
 
     if r.status_code != 200:
@@ -40,7 +40,7 @@ def count_words(subreddit, word_list, after='', hot_dict={}):
     for word in word_list:
         if title.count(word):
             if word in hot_dict:
-                number = hot_dict.get(word) + 1
+                number = hot_dict.get(word) + title.count(word)
                 hot_dict.update({word: number})
             else:
                 hot_dict.update({word: 1})

@@ -53,7 +53,8 @@ def count_words(subreddit, word_list, after='', hot_dict={}):
     title_words = title.split()
 
     # If a desired word is in the title --> Add count to the dictionary
-    for word in word_list:
+    for w in word_list:
+        word = w.lower()
         if title_words.count(word):
             if word in hot_dict:
                 hot_dict[word] += title_words.count(word)

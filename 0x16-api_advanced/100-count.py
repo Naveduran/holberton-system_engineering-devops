@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-"""count words in pais titles"""
-import copy
+"""count words in titles"""
 import requests
 
 
 def to_text(hot_dict):
+    """printing function """
     if len(hot_dict) == 0:
         return ''
     text = ''

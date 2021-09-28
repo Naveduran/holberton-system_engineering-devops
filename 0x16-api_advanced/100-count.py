@@ -16,35 +16,44 @@ def to_text(hot_dict):
 
 
 def count_words(subreddit, word_list, after='', hot_dict={}):
-    """Return a sorted count of given keywords """
+    """Parse the titles of subreddit posts to return a sorted count
+    of given keywords """
 
-    # URL request with an after and a limit
-    URL = 'https://www.reddit.com/r/{}/hot.json?after={}&limit=1'.format(
+    # Request titles one by one (using after and a limit)
+    # using a custom user agent to avoid errors about 'too many requests'
+
+    url = 'https://www.reddit.com/r/{}/hot.json?after={}&limit=1'.format(
         subreddit, after)
+
     headers = {
         'User-Agent':
         'Nat'}
-    r = requests.get(URL, headers=headers, allow_redirects=False)
 
+    r = requests.get(url, headers=headers, allow_redirects=False)
+
+    # If the resquest fail, do not run the rest of the code
     if r.status_code != 200:
         return
 
-    # Check the data
+    # Get the data from the json
     data = r.json().get('data')
 
+    # If there are no more elements to check --> print!
     if len(data.get('children')) == 0:
         return to_text(hot_dict)
 
-    # Get the tittle and parse it
-    title = data.get('children')[0].get('data').get('title')
+    # Get the tittle, split words, compare with the words list,
+    # if words are founded --> add count to the dictionary
+    title = data.get('children')[0].get('data').get('title').lower()
+    title_words = title.split()
     for word in word_list:
-        if title.count(word):
+        if title_words.count(word):
             if word in hot_dict:
-                number = hot_dict.get(word) + title.count(word)
+                number = hot_dict.get(word) + title_words.count(word)
                 hot_dict.update({word: number})
             else:
-                hot_dict.update({word: 1})
+                hot_dict.update({word: title_words.count(word)})
 
-    # Make a new recursive call
+    # Call this recursive function for the next element of the list
     after = data.get('after')
     count_words(subreddit, word_list, after, hot_dict)

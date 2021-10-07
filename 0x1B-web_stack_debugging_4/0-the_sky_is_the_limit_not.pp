@@ -6,5 +6,5 @@ exec{'sed':
 
 exec{'sed':
   path    => '/bin',
-  command => 'sudo service nginx restart'
+  command => 'service nginx restart'
 }
